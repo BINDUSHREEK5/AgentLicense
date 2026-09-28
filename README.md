@@ -175,14 +175,6 @@ pip install -r requirements.txt
 cp .env.example .env
 ```
 
-Edit `.env`:
-```
-APP_ENV=development
-DEBUG=true
-DEMO_MODE=true
-DATABASE_URL=sqlite:///./agentlicense.db
-CORS_ORIGINS=http://localhost:3000,http://localhost:8000
-```
 
 **Run database initialization:**
 ```bash
@@ -433,46 +425,6 @@ CREATE TABLE license_usage (
 );
 ```
 
-## 🔑 Environment Variables
-
-### Backend (.env)
-```
-# Application
-APP_ENV=development
-DEBUG=true
-DEMO_MODE=true
-
-# Database
-DATABASE_URL=sqlite:///./agentlicense.db
-
-# Algorand
-ALGORAND_NETWORK=testnet
-ALGORAND_NODE_URL=https://testnet-algorand.api.purestake.io/ps2
-ALGORAND_INDEXER_URL=https://testnet-algorand.api.purestake.io/idx2
-ALGORAND_WALLET_ADDRESS=  # Optional for testnet
-ALGORAND_PRIVATE_KEY=     # Optional for testnet
-ALGORAND_ASSET_ID=0
-
-# x402 Payment
-X402_ENABLED=true
-X402_FACILITATOR_URL=http://localhost:9090
-X402_NETWORK=algorand-testnet
-X402_ASSET_ID=
-
-# CORS
-CORS_ORIGINS=http://localhost:3000,http://localhost:8000
-
-# Server
-SERVER_HOST=0.0.0.0
-SERVER_PORT=8000
-```
-
-### Frontend (.env)
-```
-VITE_API_URL=http://localhost:8000
-VITE_DEMO_MODE=true
-```
-
 ## 🎭 Demo Mode vs Testnet Mode
 
 ### Demo Mode (Default)
@@ -539,25 +491,6 @@ Solution: Delete agentlicense.db and restart backend (reinitializes DB)
 Error: License not found
 Solution: Ensure license was created after payment verification
 ```
-
-## 📝 License Model Details
-
-Every license includes:
-- **license_id**: Unique identifier
-- **resource_id**: Which resource it grants access to
-- **buyer**: Agent/entity that purchased the license
-- **seller**: Provider of the resource
-- **price**: Cost in USDC
-- **usage_limit**: Maximum uses allowed
-- **uses_remaining**: Tracked and decremented
-- **commercial_use**: Permission flag
-- **redistribution_allowed**: Permission flag
-- **training_allowed**: Permission flag
-- **expires_at**: Expiration timestamp (optional)
-- **status**: active/expired/exhausted/revoked
-- **payment_reference**: Links to payment record
-- **algorand_tx_id**: Blockchain transaction ID
-- **license_hash**: SHA-256 hash for integrity
 
 ## 🔗 Agent Decision Logic
 
